@@ -207,17 +207,17 @@ Usage example:
 /*  ================================================================================
 	STYLE PLACEHOLDER TEXT IN INPUT FIELDS
 ================================================================================  */
-/* line 153, ../extensions/_helpers.scss */
-.clearfix, [data-block-height], [data-horizontal-boxes] {
+/* line 152, ../extensions/_helpers.scss */
+.clearfix, [data-block-height], [data-columns] {
   *zoom: 1;
 }
-/* line 156, ../extensions/_helpers.scss */
-.clearfix:before, [data-block-height]:before, [data-horizontal-boxes]:before, .clearfix:after, [data-block-height]:after, [data-horizontal-boxes]:after {
+/* line 155, ../extensions/_helpers.scss */
+.clearfix:before, [data-block-height]:before, [data-columns]:before, .clearfix:after, [data-block-height]:after, [data-columns]:after {
   content: " ";
   display: table;
 }
 /* line 159, ../extensions/_helpers.scss */
-.clearfix:after, [data-block-height]:after, [data-horizontal-boxes]:after {
+.clearfix:after, [data-block-height]:after, [data-columns]:after {
   clear: both;
 }
 
@@ -229,100 +229,123 @@ Usage example:
 }
 */
 /*  ================================================================================
+	Fade in on document ready - with fallback
+================================================================================  */
+/* line 236, ../extensions/_helpers.scss */
+.fadeIn {
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+/* line 240, ../extensions/_helpers.scss */
+.fadeInReady .fadeIn {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+/* line 228, ../extensions/_helpers.scss */
+.no-js .fadeIn {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+/*  ================================================================================
 	BLOCK ELEMENT
 ================================================================================  */
 /* Usage example: <div data-block-height="4" data-small-block-height="2"></div> */
-/* line 267, ../extensions/_helpers.scss */
+/* line 259, ../extensions/_helpers.scss */
 [data-block-height="15"],
 .small [data-small-block-height="15"] {
   height: 150px;
 }
 
-/* line 267, ../extensions/_helpers.scss */
+/* line 259, ../extensions/_helpers.scss */
 [data-block-height="14"],
 .small [data-small-block-height="14"] {
   height: 140px;
 }
 
-/* line 267, ../extensions/_helpers.scss */
+/* line 259, ../extensions/_helpers.scss */
 [data-block-height="13"],
 .small [data-small-block-height="13"] {
   height: 130px;
 }
 
-/* line 267, ../extensions/_helpers.scss */
+/* line 259, ../extensions/_helpers.scss */
 [data-block-height="12"],
 .small [data-small-block-height="12"] {
   height: 120px;
 }
 
-/* line 267, ../extensions/_helpers.scss */
+/* line 259, ../extensions/_helpers.scss */
 [data-block-height="11"],
 .small [data-small-block-height="11"] {
   height: 110px;
 }
 
-/* line 267, ../extensions/_helpers.scss */
+/* line 259, ../extensions/_helpers.scss */
 [data-block-height="10"],
 .small [data-small-block-height="10"] {
   height: 100px;
 }
 
-/* line 267, ../extensions/_helpers.scss */
+/* line 259, ../extensions/_helpers.scss */
 [data-block-height="9"],
 .small [data-small-block-height="9"] {
   height: 90px;
 }
 
-/* line 267, ../extensions/_helpers.scss */
+/* line 259, ../extensions/_helpers.scss */
 [data-block-height="8"],
 .small [data-small-block-height="8"] {
   height: 80px;
 }
 
-/* line 267, ../extensions/_helpers.scss */
+/* line 259, ../extensions/_helpers.scss */
 [data-block-height="7"],
 .small [data-small-block-height="7"] {
   height: 70px;
 }
 
-/* line 267, ../extensions/_helpers.scss */
+/* line 259, ../extensions/_helpers.scss */
 [data-block-height="6"],
 .small [data-small-block-height="6"] {
   height: 60px;
 }
 
-/* line 267, ../extensions/_helpers.scss */
+/* line 259, ../extensions/_helpers.scss */
 [data-block-height="5"],
 .small [data-small-block-height="5"] {
   height: 50px;
 }
 
-/* line 267, ../extensions/_helpers.scss */
+/* line 259, ../extensions/_helpers.scss */
 [data-block-height="4"],
 .small [data-small-block-height="4"] {
   height: 40px;
 }
 
-/* line 267, ../extensions/_helpers.scss */
+/* line 259, ../extensions/_helpers.scss */
 [data-block-height="3"],
 .small [data-small-block-height="3"] {
   height: 30px;
 }
 
-/* line 267, ../extensions/_helpers.scss */
+/* line 259, ../extensions/_helpers.scss */
 [data-block-height="2"],
 .small [data-small-block-height="2"] {
   height: 20px;
 }
 
-/* line 267, ../extensions/_helpers.scss */
+/* line 259, ../extensions/_helpers.scss */
 [data-block-height="1"],
 .small [data-small-block-height="1"] {
   height: 10px;
 }
 
-/* line 273, ../extensions/_helpers.scss */
+/* line 265, ../extensions/_helpers.scss */
 [data-block-height] {
   display: block;
   width: 100%;
@@ -331,120 +354,366 @@ Usage example:
 /*  =====================================================================================
 	Simple grid system built on data-attributes data-box-amount and data-horizontal-boxes
 =========================================================================================  */
-/*
-
-Example usage:
-<div data-box-amount="3">
-	<div class="box">
-	<div class="box">
-	<div class="box">
-</div>
-
-*/
-/* line 294, ../extensions/_helpers.scss */
-[data-horizontal-boxes] {
+/* line 280, ../extensions/_helpers.scss */
+[data-columns] {
   width: 100%;
   display: block;
 }
+/* line 285, ../extensions/_helpers.scss */
+[data-columns] .box {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  margin-right: -4px;
+  background: skyblue;
+}
+/* line 290, ../extensions/_helpers.scss */
+[data-columns] .box > div {
+  display: block;
+  background: salmon;
+}
 
-/* line 302, ../extensions/_helpers.scss */
-[data-horizontal-boxes="20"] .box {
+/* line 301, ../extensions/_helpers.scss */
+[data-columns="20"] .box,
+.small [data-mobile-columns="20"] .box {
   width: 5%;
+  padding: 0 10px 0 10px;
+}
+/* line 304, ../extensions/_helpers.scss */
+[data-columns="20"] .box:nth-child(20n+1),
+.small [data-mobile-columns="20"] .box:nth-child(20n+1) {
+  padding-left: 0px;
+}
+/* line 307, ../extensions/_helpers.scss */
+[data-columns="20"] .box:nth-child(20n+20),
+.small [data-mobile-columns="20"] .box:nth-child(20n+20) {
+  padding-right: 0px;
 }
 
-/* line 302, ../extensions/_helpers.scss */
-[data-horizontal-boxes="19"] .box {
+/* line 301, ../extensions/_helpers.scss */
+[data-columns="19"] .box,
+.small [data-mobile-columns="19"] .box {
   width: 5.26316%;
+  padding: 0 10px 0 10px;
+}
+/* line 304, ../extensions/_helpers.scss */
+[data-columns="19"] .box:nth-child(19n+1),
+.small [data-mobile-columns="19"] .box:nth-child(19n+1) {
+  padding-left: 0px;
+}
+/* line 307, ../extensions/_helpers.scss */
+[data-columns="19"] .box:nth-child(19n+19),
+.small [data-mobile-columns="19"] .box:nth-child(19n+19) {
+  padding-right: 0px;
 }
 
-/* line 302, ../extensions/_helpers.scss */
-[data-horizontal-boxes="18"] .box {
+/* line 301, ../extensions/_helpers.scss */
+[data-columns="18"] .box,
+.small [data-mobile-columns="18"] .box {
   width: 5.55556%;
+  padding: 0 10px 0 10px;
+}
+/* line 304, ../extensions/_helpers.scss */
+[data-columns="18"] .box:nth-child(18n+1),
+.small [data-mobile-columns="18"] .box:nth-child(18n+1) {
+  padding-left: 0px;
+}
+/* line 307, ../extensions/_helpers.scss */
+[data-columns="18"] .box:nth-child(18n+18),
+.small [data-mobile-columns="18"] .box:nth-child(18n+18) {
+  padding-right: 0px;
 }
 
-/* line 302, ../extensions/_helpers.scss */
-[data-horizontal-boxes="17"] .box {
+/* line 301, ../extensions/_helpers.scss */
+[data-columns="17"] .box,
+.small [data-mobile-columns="17"] .box {
   width: 5.88235%;
+  padding: 0 10px 0 10px;
+}
+/* line 304, ../extensions/_helpers.scss */
+[data-columns="17"] .box:nth-child(17n+1),
+.small [data-mobile-columns="17"] .box:nth-child(17n+1) {
+  padding-left: 0px;
+}
+/* line 307, ../extensions/_helpers.scss */
+[data-columns="17"] .box:nth-child(17n+17),
+.small [data-mobile-columns="17"] .box:nth-child(17n+17) {
+  padding-right: 0px;
 }
 
-/* line 302, ../extensions/_helpers.scss */
-[data-horizontal-boxes="16"] .box {
+/* line 301, ../extensions/_helpers.scss */
+[data-columns="16"] .box,
+.small [data-mobile-columns="16"] .box {
   width: 6.25%;
+  padding: 0 10px 0 10px;
+}
+/* line 304, ../extensions/_helpers.scss */
+[data-columns="16"] .box:nth-child(16n+1),
+.small [data-mobile-columns="16"] .box:nth-child(16n+1) {
+  padding-left: 0px;
+}
+/* line 307, ../extensions/_helpers.scss */
+[data-columns="16"] .box:nth-child(16n+16),
+.small [data-mobile-columns="16"] .box:nth-child(16n+16) {
+  padding-right: 0px;
 }
 
-/* line 302, ../extensions/_helpers.scss */
-[data-horizontal-boxes="15"] .box {
+/* line 301, ../extensions/_helpers.scss */
+[data-columns="15"] .box,
+.small [data-mobile-columns="15"] .box {
   width: 6.66667%;
+  padding: 0 10px 0 10px;
+}
+/* line 304, ../extensions/_helpers.scss */
+[data-columns="15"] .box:nth-child(15n+1),
+.small [data-mobile-columns="15"] .box:nth-child(15n+1) {
+  padding-left: 0px;
+}
+/* line 307, ../extensions/_helpers.scss */
+[data-columns="15"] .box:nth-child(15n+15),
+.small [data-mobile-columns="15"] .box:nth-child(15n+15) {
+  padding-right: 0px;
 }
 
-/* line 302, ../extensions/_helpers.scss */
-[data-horizontal-boxes="14"] .box {
+/* line 301, ../extensions/_helpers.scss */
+[data-columns="14"] .box,
+.small [data-mobile-columns="14"] .box {
   width: 7.14286%;
+  padding: 0 10px 0 10px;
+}
+/* line 304, ../extensions/_helpers.scss */
+[data-columns="14"] .box:nth-child(14n+1),
+.small [data-mobile-columns="14"] .box:nth-child(14n+1) {
+  padding-left: 0px;
+}
+/* line 307, ../extensions/_helpers.scss */
+[data-columns="14"] .box:nth-child(14n+14),
+.small [data-mobile-columns="14"] .box:nth-child(14n+14) {
+  padding-right: 0px;
 }
 
-/* line 302, ../extensions/_helpers.scss */
-[data-horizontal-boxes="13"] .box {
+/* line 301, ../extensions/_helpers.scss */
+[data-columns="13"] .box,
+.small [data-mobile-columns="13"] .box {
   width: 7.69231%;
+  padding: 0 10px 0 10px;
+}
+/* line 304, ../extensions/_helpers.scss */
+[data-columns="13"] .box:nth-child(13n+1),
+.small [data-mobile-columns="13"] .box:nth-child(13n+1) {
+  padding-left: 0px;
+}
+/* line 307, ../extensions/_helpers.scss */
+[data-columns="13"] .box:nth-child(13n+13),
+.small [data-mobile-columns="13"] .box:nth-child(13n+13) {
+  padding-right: 0px;
 }
 
-/* line 302, ../extensions/_helpers.scss */
-[data-horizontal-boxes="12"] .box {
+/* line 301, ../extensions/_helpers.scss */
+[data-columns="12"] .box,
+.small [data-mobile-columns="12"] .box {
   width: 8.33333%;
+  padding: 0 10px 0 10px;
+}
+/* line 304, ../extensions/_helpers.scss */
+[data-columns="12"] .box:nth-child(12n+1),
+.small [data-mobile-columns="12"] .box:nth-child(12n+1) {
+  padding-left: 0px;
+}
+/* line 307, ../extensions/_helpers.scss */
+[data-columns="12"] .box:nth-child(12n+12),
+.small [data-mobile-columns="12"] .box:nth-child(12n+12) {
+  padding-right: 0px;
 }
 
-/* line 302, ../extensions/_helpers.scss */
-[data-horizontal-boxes="11"] .box {
+/* line 301, ../extensions/_helpers.scss */
+[data-columns="11"] .box,
+.small [data-mobile-columns="11"] .box {
   width: 9.09091%;
+  padding: 0 10px 0 10px;
+}
+/* line 304, ../extensions/_helpers.scss */
+[data-columns="11"] .box:nth-child(11n+1),
+.small [data-mobile-columns="11"] .box:nth-child(11n+1) {
+  padding-left: 0px;
+}
+/* line 307, ../extensions/_helpers.scss */
+[data-columns="11"] .box:nth-child(11n+11),
+.small [data-mobile-columns="11"] .box:nth-child(11n+11) {
+  padding-right: 0px;
 }
 
-/* line 302, ../extensions/_helpers.scss */
-[data-horizontal-boxes="10"] .box {
+/* line 301, ../extensions/_helpers.scss */
+[data-columns="10"] .box,
+.small [data-mobile-columns="10"] .box {
   width: 10%;
+  padding: 0 10px 0 10px;
+}
+/* line 304, ../extensions/_helpers.scss */
+[data-columns="10"] .box:nth-child(10n+1),
+.small [data-mobile-columns="10"] .box:nth-child(10n+1) {
+  padding-left: 0px;
+}
+/* line 307, ../extensions/_helpers.scss */
+[data-columns="10"] .box:nth-child(10n+10),
+.small [data-mobile-columns="10"] .box:nth-child(10n+10) {
+  padding-right: 0px;
 }
 
-/* line 302, ../extensions/_helpers.scss */
-[data-horizontal-boxes="9"] .box {
+/* line 301, ../extensions/_helpers.scss */
+[data-columns="9"] .box,
+.small [data-mobile-columns="9"] .box {
   width: 11.11111%;
+  padding: 0 10px 0 10px;
+}
+/* line 304, ../extensions/_helpers.scss */
+[data-columns="9"] .box:nth-child(9n+1),
+.small [data-mobile-columns="9"] .box:nth-child(9n+1) {
+  padding-left: 0px;
+}
+/* line 307, ../extensions/_helpers.scss */
+[data-columns="9"] .box:nth-child(9n+9),
+.small [data-mobile-columns="9"] .box:nth-child(9n+9) {
+  padding-right: 0px;
 }
 
-/* line 302, ../extensions/_helpers.scss */
-[data-horizontal-boxes="8"] .box {
+/* line 301, ../extensions/_helpers.scss */
+[data-columns="8"] .box,
+.small [data-mobile-columns="8"] .box {
   width: 12.5%;
+  padding: 0 10px 0 10px;
+}
+/* line 304, ../extensions/_helpers.scss */
+[data-columns="8"] .box:nth-child(8n+1),
+.small [data-mobile-columns="8"] .box:nth-child(8n+1) {
+  padding-left: 0px;
+}
+/* line 307, ../extensions/_helpers.scss */
+[data-columns="8"] .box:nth-child(8n+8),
+.small [data-mobile-columns="8"] .box:nth-child(8n+8) {
+  padding-right: 0px;
 }
 
-/* line 302, ../extensions/_helpers.scss */
-[data-horizontal-boxes="7"] .box {
+/* line 301, ../extensions/_helpers.scss */
+[data-columns="7"] .box,
+.small [data-mobile-columns="7"] .box {
   width: 14.28571%;
+  padding: 0 10px 0 10px;
+}
+/* line 304, ../extensions/_helpers.scss */
+[data-columns="7"] .box:nth-child(7n+1),
+.small [data-mobile-columns="7"] .box:nth-child(7n+1) {
+  padding-left: 0px;
+}
+/* line 307, ../extensions/_helpers.scss */
+[data-columns="7"] .box:nth-child(7n+7),
+.small [data-mobile-columns="7"] .box:nth-child(7n+7) {
+  padding-right: 0px;
 }
 
-/* line 302, ../extensions/_helpers.scss */
-[data-horizontal-boxes="6"] .box {
+/* line 301, ../extensions/_helpers.scss */
+[data-columns="6"] .box,
+.small [data-mobile-columns="6"] .box {
   width: 16.66667%;
+  padding: 0 10px 0 10px;
+}
+/* line 304, ../extensions/_helpers.scss */
+[data-columns="6"] .box:nth-child(6n+1),
+.small [data-mobile-columns="6"] .box:nth-child(6n+1) {
+  padding-left: 0px;
+}
+/* line 307, ../extensions/_helpers.scss */
+[data-columns="6"] .box:nth-child(6n+6),
+.small [data-mobile-columns="6"] .box:nth-child(6n+6) {
+  padding-right: 0px;
 }
 
-/* line 302, ../extensions/_helpers.scss */
-[data-horizontal-boxes="5"] .box {
+/* line 301, ../extensions/_helpers.scss */
+[data-columns="5"] .box,
+.small [data-mobile-columns="5"] .box {
   width: 20%;
+  padding: 0 10px 0 10px;
+}
+/* line 304, ../extensions/_helpers.scss */
+[data-columns="5"] .box:nth-child(5n+1),
+.small [data-mobile-columns="5"] .box:nth-child(5n+1) {
+  padding-left: 0px;
+}
+/* line 307, ../extensions/_helpers.scss */
+[data-columns="5"] .box:nth-child(5n+5),
+.small [data-mobile-columns="5"] .box:nth-child(5n+5) {
+  padding-right: 0px;
 }
 
-/* line 302, ../extensions/_helpers.scss */
-[data-horizontal-boxes="4"] .box {
+/* line 301, ../extensions/_helpers.scss */
+[data-columns="4"] .box,
+.small [data-mobile-columns="4"] .box {
   width: 25%;
+  padding: 0 10px 0 10px;
+}
+/* line 304, ../extensions/_helpers.scss */
+[data-columns="4"] .box:nth-child(4n+1),
+.small [data-mobile-columns="4"] .box:nth-child(4n+1) {
+  padding-left: 0px;
+}
+/* line 307, ../extensions/_helpers.scss */
+[data-columns="4"] .box:nth-child(4n+4),
+.small [data-mobile-columns="4"] .box:nth-child(4n+4) {
+  padding-right: 0px;
 }
 
-/* line 302, ../extensions/_helpers.scss */
-[data-horizontal-boxes="3"] .box {
+/* line 301, ../extensions/_helpers.scss */
+[data-columns="3"] .box,
+.small [data-mobile-columns="3"] .box {
   width: 33.33333%;
+  padding: 0 10px 0 10px;
+}
+/* line 304, ../extensions/_helpers.scss */
+[data-columns="3"] .box:nth-child(3n+1),
+.small [data-mobile-columns="3"] .box:nth-child(3n+1) {
+  padding-left: 0px;
+}
+/* line 307, ../extensions/_helpers.scss */
+[data-columns="3"] .box:nth-child(3n+3),
+.small [data-mobile-columns="3"] .box:nth-child(3n+3) {
+  padding-right: 0px;
 }
 
-/* line 302, ../extensions/_helpers.scss */
-[data-horizontal-boxes="2"] .box {
+/* line 301, ../extensions/_helpers.scss */
+[data-columns="2"] .box,
+.small [data-mobile-columns="2"] .box {
   width: 50%;
+  padding: 0 10px 0 10px;
+}
+/* line 304, ../extensions/_helpers.scss */
+[data-columns="2"] .box:nth-child(2n+1),
+.small [data-mobile-columns="2"] .box:nth-child(2n+1) {
+  padding-left: 0px;
+}
+/* line 307, ../extensions/_helpers.scss */
+[data-columns="2"] .box:nth-child(2n+2),
+.small [data-mobile-columns="2"] .box:nth-child(2n+2) {
+  padding-right: 0px;
 }
 
-/* line 302, ../extensions/_helpers.scss */
-[data-horizontal-boxes="1"] .box {
+/* line 301, ../extensions/_helpers.scss */
+[data-columns="1"] .box,
+.small [data-mobile-columns="1"] .box {
   width: 100%;
+  padding: 0 10px 0 10px;
+}
+/* line 304, ../extensions/_helpers.scss */
+[data-columns="1"] .box:nth-child(1n+1),
+.small [data-mobile-columns="1"] .box:nth-child(1n+1) {
+  padding-left: 0px;
+}
+/* line 307, ../extensions/_helpers.scss */
+[data-columns="1"] .box:nth-child(1n+1),
+.small [data-mobile-columns="1"] .box:nth-child(1n+1) {
+  padding-right: 0px;
 }
 
 /*  ================================================================================
@@ -652,39 +921,30 @@ img {
   height: 16px;
   width: 16px;
   background-size: 100%;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
 }
 
 /*  ================================================================================
 	Helpful classes
 ================================================================================  */
-/* line 42, ../partials/_global.scss */
-.widthLimit {
+/* line 40, ../partials/_global.scss */
+.largeLimit {
+  max-width: 1020px;
   margin: 0 auto;
-  max-width: 590px;
   padding: 0 20px;
   position: relative;
 }
-/* line 125, ../extensions/_helpers.scss */
-.lte-ie9 .widthLimit {
-  width: 590px;
+/* line 124, ../extensions/_helpers.scss */
+.lte-ie9 .largeLimit {
+  width: 1020px;
 }
 
-/* line 50, ../partials/_global.scss */
-.fadeIn {
-  -webkit-transition-property: opacity;
-  -moz-transition-property: opacity;
-  -o-transition-property: opacity;
-  transition-property: opacity;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  opacity: 0;
-}
-/* line 54, ../partials/_global.scss */
-.fadeInReady .fadeIn {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-  opacity: 1;
-}
-
-/* line 60, ../partials/_global.scss */
+/* line 49, ../partials/_global.scss */
 .visuallyHidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -699,17 +959,17 @@ img {
 /*  ================================================================================
 	TABLES
 ================================================================================  */
-/* line 76, ../partials/_global.scss */
+/* line 65, ../partials/_global.scss */
 table {
   width: 100%;
 }
 
-/* line 80, ../partials/_global.scss */
+/* line 69, ../partials/_global.scss */
 table, th, td {
   border-collapse: collapse;
 }
 
-/* line 99, ../partials/_global.scss */
+/* line 88, ../partials/_global.scss */
 .visibleMobile {
   display: none;
 }
@@ -718,11 +978,24 @@ table, th, td {
 	SMALL SCREENS
 ================================================================================  */
 @media (max-width: 650px) {
-  /* line 107, ../partials/_global.scss */
-  .widthLimit {
+  /* line 96, ../partials/_global.scss */
+  .largeLimit {
     padding: 0 0 0 0;
   }
+
+  /* line 100, ../partials/_global.scss */
+  .smallLimit {
+    width: 100%;
+    padding: 0 20px !important;
+  }
+  /* line 103, ../partials/_global.scss */
+  .smallLimit.largeLimit {
+    padding: 0 20px !important;
+  }
 }
+/*  ================================================================================
+	Small screens
+================================================================================  */
 /*  ================================================================================
 	Small screens
 ================================================================================  */

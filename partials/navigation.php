@@ -1,10 +1,9 @@
-<nav class="nav">
-    <ul class="widthLimit">
+<nav id="nav">
+    <ul class="largeLimit">
         <li>
             <a href="<?= $path['uri']['views'] ?>index.php">Home</a>
-            <a href="<?= $path['uri']['views'] ?>page1.php">Page1</a>
+            <a href="<?= $path['uri']['views'] ?>example-page.php">Example Page</a>
         </li>
-
     </ul>
 </nav>
 

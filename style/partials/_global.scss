@@ -30,31 +30,20 @@ img {
 	height: $defaultIconHeight;
 	width: $defaultIconWidth;
 	background-size: 100%;
+	@include inline-block;
 }
-
-
-
 
 
 /*  ================================================================================
 	Helpful classes
 ================================================================================  */
-.widthLimit {
-	margin: 0 auto;
+.largeLimit {
 	@include max-width($siteMaxWidth + $sitePadding*2);
+	margin: 0 auto;
 	padding: 0 $sitePadding;
 	position: relative;
 }
 
-
-.fadeIn {
-	@include transition-property(opacity);
-	@extend .transitionDefaults;
-	@include opacity(0);
-	.fadeInReady & {
-		@include opacity(1);
-	}
-}
 
 
 .visuallyHidden {
@@ -104,8 +93,16 @@ tbody {
 	SMALL SCREENS
 ================================================================================  */
 @include device-size(small) {
-	.widthLimit {
+	.largeLimit {
 		padding: 0 0 0 0;
+	}
+
+	.smallLimit {
+		width: 100%;
+		padding: 0 $smallSitePadding !important;
+		&.largeLimit {
+			padding: 0 $smallSitePadding !important;
+		}
 	}
 
 }

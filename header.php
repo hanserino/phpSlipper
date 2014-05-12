@@ -27,7 +27,7 @@
 <body>
 
     <header id="header">
-        <div class="widthLimit">
+        <div class="largeLimit">
             <h1>Header</h1>
         </div>
         <?php include $path["file"]["partials"] . 'navigation.php'; ?>

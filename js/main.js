@@ -1,7 +1,7 @@
 /*  ================================================================================
  DEFAULT PARAMETERS
  ================================================================================  */
-var mobileWidth = 550,
+var mobileWidth = 650,
 	defaultAnimationSpeed = 300,
 	defaultAnimationStartTimeout = 0,
 	defaultFadeInDelay = 300,
