@@ -1,0 +1,81 @@
+/*  ================================================================================
+	Parameters
+	Parameters for use in this project
+================================================================================  */
+$baseUnit: 10px;
+$siteMaxWidth: 550px;
+
+$sitePadding: 20px;
+$smallSitePadding: 20px;
+
+$defaultAlphaValue: 0.95;
+
+$triangleWidth: 12px;
+$triangleHeight: 16px;
+
+$mobileBreakPoint: 650px;
+
+/* Icon sizes */
+$defaultIconWidth: 16px;
+$defaultIconHeight: 16px;
+
+/* ========================================================================
+#ANIMATIONS: Default Animation variables
+========================================================================= */
+$default-animation-delay: 0s;
+$default-animation-duration: 0.4s;
+$default-animation-timing-function: linear;
+$default-animation-direction: normal;
+$default-animation-fill-mode: forwards;
+$default-animation-iteration-count: 1;
+$default-animation-play-state: running;
+
+.animationDefaults {
+	@include animation-defaults();
+}
+
+.animationLoop {
+	@include animation-delay(0);
+	@include animation-duration(1s);
+	@include animation-timing-function(linear);
+	@include animation-direction(alternate);
+	@include animation-fill-mode(forwards);
+	@include animation-iteration-count(infinite);
+	@include animation-play-state(running);
+}
+
+/* ========================================================================
+#TRANSITIONS: Default Transition variables
+========================================================================= */
+$default-transition-property: all;
+$default-transition-duration: .3s;
+$default-transition-function: false;
+$default-transition-delay: 0s;
+
+.transitionDefaults {
+	@include transition($default-transition-property $default-transition-duration $default-transition-delay $default-transition-function);
+}
+
+/* ========================================================================
+#BOXSHADOW: Default Box Shadow variables
+========================================================================= */
+$default-box-shadow-color: rgba(0, 0, 0, .5);
+$default-box-shadow-h-offset: 2px;
+$default-box-shadow-v-offset: 3px;
+$default-box-shadow-blur: 2px;
+$default-box-shadow-spread: 0px;
+$default-box-shadow-inset: none;
+
+.defaultBoxShadow {
+	@include box-shadow($default-box-shadow-h-offset $default-box-shadow-v-offset $default-box-shadow-blur $default-box-shadow-spread $default-box-shadow-color);
+}
+
+/* ========================================================================
+#DEFAULT BORDER RADIUS
+========================================================================= */
+$default-border-radius: 3px;
+
+.defaultBorderRadius {
+	@include border-radius($default-border-radius);
+}
+

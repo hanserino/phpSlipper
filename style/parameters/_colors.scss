@@ -1,0 +1,14 @@
+/*  ================================================================================
+	Parameters: Colors
+	Color parameters for use in this project
+================================================================================  */
+
+$black: #000;
+$white: #fff;
+
+//Main text color
+$swatch1: #22282e;
+
+@mixin rgba1 {
+	@include rgba-background(rgba(221, 242, 187, $defaultAlphaValue));
+}

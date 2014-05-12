@@ -1,0 +1,306 @@
+/*  ================================================================================
+	Helpers
+	Helpful classes and extentions  - more helpful global classes in .global.scss
+================================================================================  */
+
+
+
+
+// Wrap a .ie8 or specificd version around the rule allowing for overriding for ie browsers
+@mixin ie($version: 8) {
+	.ie#{$version} & { @content; }
+}
+
+
+/* ========================================================================
+#MEDIA QUERIES
+========================================================================= */
+@mixin device-size($size) {
+	@if $size == small {
+		@media (max-width: $mobileBreakPoint) { @content; }
+	}
+}
+
+
+/*  ================================================================================
+	HOVER
+	Adds a hover rule to the current rule wrapped in the prefix html.notouch
+	(or any class supplied using @include hover([class]) so touch devices
+	(ahem iDevices) don't show the hover state on touch requiring
+	two touches to activate the event
+================================================================================  */
+@mixin hover($class: hover) {
+	html.#{$class} &:hover {
+		@content;
+	}
+}
+
+@mixin no-box-shadow(){
+	@include box-shadow(0 0 0 transparent);
+}
+
+/*
+Usage example:
+@include hover(){
+	background: red;
+}
+*/
+
+/*  ================================================================================
+	BROWSER SUPPORT
+
+	Wraps current rule with a modernizr html prefix of supported properties or
+	unsupported properties. To specify an array of properties provide a comma
+	separated list wrapped in parentheses e.g. (property1, property2, property3)
+
+	js					flexbox				canvas			canvastext
+	webgl				touch				geolocation		postmessage
+	websqldatabase		indexeddb			hashchange		history
+	draganddrop			websockets			rgba			hsla
+	multiplebgs			backgroundsize		borderimage		borderradius
+	boxshadow			textshadow			opacity			cssanimations
+	csscolumns			cssgradients		cssreflections
+	csstransforms		csstransforms3d		csstransitions
+	fontface			generatedcontent	video
+	audio				localstorage		sessionstorage
+	webworkers			applicationcache	svg
+	inlinesvg			smil				svgclippaths
+
+	Examples:
+
+	Browsers with support for webgl:
+		.rule {
+			@include support(webgl){
+				background: blue;
+			}
+		}
+
+	Browsers with support for webgl svg and canvas:
+		.rule {
+			@include support((webgl, svg, canvas)){
+				background: blue;
+			}
+		}
+
+	Browsers without support for csstransitions cssreflections and cssanimations:
+		.rule {
+			@include support((csstransitions, cssreflections, cssanimations)){
+				background: blue;
+			}
+		}
+
+================================================================================  */
+@mixin support($properties) {
+	@each $property in $properties {
+		html.#{$property} & {
+			@content;
+		}
+	}
+}
+
+@mixin no-support($properties) {
+	@each $property in $properties {
+		html.no-#{$property} & {
+			@content;
+		}
+	}
+}
+
+
+@function units($count) {
+	@return $count * $baseUnit;
+}
+
+@mixin user-select($choice){
+//	auto | none | text;
+	-webkit-user-select: $choice;
+	-khtml-user-select: $choice;
+	-moz-user-select: $choice;
+	-o-user-select: $choice;
+	user-select: $choice;
+}
+
+@mixin max-width($maxWidth){
+	max-width: $maxWidth;
+	.lte-ie9 &{
+		width: $maxWidth;
+	}
+}
+
+/*  ================================================================================
+	STYLE PLACEHOLDER TEXT IN INPUT FIELDS
+================================================================================  */
+
+@mixin placeholder-color($color){
+	::-webkit-input-placeholder {
+	   color: $color;
+	}
+	
+	:-moz-placeholder { /* Firefox 18- */
+	   color: $color;  
+	}
+	
+	::-moz-placeholder {  /* Firefox 19+ */
+	   color: $color;  
+	}
+	
+	:-ms-input-placeholder {  
+	   color: $color;  
+	}
+}
+
+
+.clearfix{
+	*zoom: 1;
+	&:before,
+	&:after{
+		content: " "; display: table;
+	}
+	&:after{
+		clear: both;
+	}
+}
+
+
+
+
+/* Triangles ==================================================  */
+/* Requires parent container to be relative positioned
+* Usage example:
+	.yourDiv::after{
+ 	@include triangleDown($triangleWidth,$triangleHeight,$fff);
+}
+*/
+
+@mixin triangleDown($width, $height, $color) {
+	content: "";
+	width: 0;
+	height: 0;
+	background: transparent;
+	border-style: solid;
+	position: absolute;
+	z-index: 2;
+	left: 50%;
+	margin-left: -$width;
+	bottom: -$height;
+	border-top: $height solid $color;
+	border-right: $width solid transparent;
+	border-bottom: 0px solid transparent;
+	border-left: $width solid transparent;
+}
+
+@mixin triangleUp($width, $height, $color) {
+	content: "";
+	width: 0;
+	height: 0;
+	background: transparent;
+	border-style: solid;
+	position: absolute;
+	left: 50%;
+	z-index: 2;
+	margin-left: -$width;
+	top: -$height;
+	border-top: 0px solid transparent;
+	border-right: $width solid transparent;
+	border-bottom: $height solid $color;
+	border-left: $width solid transparent;
+}
+
+@mixin doubleBorder($border-color, $border-width){
+	width: 100%;
+	height: 4px;
+	display: block;
+	border-color: $border-color;
+	border-style: solid;
+	border-width: $border-width 0px $border-width 0px;
+
+}
+
+@mixin noPseudo{
+	margin-right:-4px;
+}
+@mixin min-height($value){
+	min-height: $value;
+	.lte-ie9 &{height: $value;}
+}
+@mixin min-width($value){
+	min-width: $value;
+	.lte-ie9 &{width: $value;}
+}
+
+@mixin grayscale($value) {
+	-webkit-filter: #{"grayscale(#{$value})"};
+	-moz-filter: #{"grayscale(#{$value})"};
+	filter:#{"grayscale(#{$value})"};
+}
+
+
+//Since we are giving the classes .docReady and .fadeInReady from javascript,
+//we need to be sure none js users will see the content based on those
+//classes as well
+
+@mixin docReady(){
+	.docReady &{
+		@content;
+	}
+	.no-js &{
+		@content;
+	}
+}
+
+@mixin fadeInReady(){
+	.fadeInReady &{
+		@content;
+	}
+	.no-js &{
+		@content;
+	}
+}
+
+/*  ================================================================================
+	BLOCK ELEMENT
+================================================================================  */
+/* Usage example: <div data-block-height="4" data-small-block-height="2"></div> */
+$b: 15;
+@while $b > 0 {
+	[data-block-height="#{$b}"],
+	.small [data-small-block-height="#{$b}"] {
+		height: 10px * $b;
+	}
+	$b: $b - 1;
+}
+
+[data-block-height]{
+	display: block;
+	width: 100%;
+	@extend .clearfix;
+}
+
+
+/*  =====================================================================================
+	Simple grid system built on data-attributes data-box-amount and data-horizontal-boxes
+=========================================================================================  */
+/*
+
+Example usage:
+<div data-box-amount="3">
+	<div class="box">
+	<div class="box">
+	<div class="box">
+</div>
+
+*/
+
+[data-horizontal-boxes]{
+	width: 100%;
+	display: block;
+	@extend .clearfix;
+}
+
+$boxes: 20;
+@while $boxes > 0 {
+	[data-horizontal-boxes="#{$boxes}"] .box{
+		width: percentage(1/$boxes);
+	}
+	$boxes: $boxes - 1;
+}
