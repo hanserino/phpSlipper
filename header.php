@@ -33,7 +33,7 @@
         <?php include $path["file"]["partials"] . 'navigation.php'; ?>
     </header>
 
-
+    <div id="main" class="largeLimit">
 
     <!-- <pre> --> <?php //print_r($path); ?> <!-- </pre> -->
 

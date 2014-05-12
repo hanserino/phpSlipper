@@ -1,8 +1,6 @@
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/header.php"; ?>
     <div data-block-height="3"></div>
 
-    <div id="main" class="largeLimit">
-
         <!-- INDEX -->
         <h1>Index</h1>
 
@@ -17,12 +15,9 @@
         <p>Over and under this is a spacing of 30px using an element with data-block-height="3"</p>
         <div data-block-height="3"></div>
 
-        <div data-columns="4" data-mobile-columns="2" class="smallLimit">
-            <div class="box"><div>Box</div></div>
-            <div class="box"><div>Box</div></div>
-            <div class="box"><div>Box</div></div>
-            <div class="box"><div>Box</div></div>
-            <div class="box"><div>Box</div></div>
+        <div data-columns="4" data-mobile-columns="2">
+            <div class="box"><div><img src="http://baconmockup.com/300/400" /></div></div>
+            <div class="box"><div><img src="http://baconmockup.com/500/800" /></div></div>
             <div class="box"><div>Box</div></div>
             <div class="box"><div>Box</div></div>
             <div class="box"><div>Box</div></div>
@@ -37,7 +32,5 @@
         </div>
 
         <div data-block-height="3"></div>
-
-    </div><!-- end #main -->
 
 <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/footer.php"; ?>

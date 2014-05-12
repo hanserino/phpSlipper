@@ -1,7 +1,6 @@
-
-    <footer id="footer" class="largeLimit">
-        <h2>Footer</h2>
-    </footer>
-
+            <footer id="footer">
+                <h2>Footer</h2>
+            </footer>
+        </div><!-- end #main -->
     </body>
 </html>

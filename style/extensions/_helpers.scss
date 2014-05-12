@@ -3,7 +3,10 @@
 	Helpful classes and extentions  - more helpful global classes in .global.scss
 ================================================================================  */
 
-
+$baseUnit: 8px;
+$defaultGutterWidth: 20px;
+$defaultSmallGutterWidth: 10px;
+$mobileBreakPoint: 650px;
 
 
 // Wrap a .ie8 or specificd version around the rule allowing for overriding for ie browsers
@@ -161,7 +164,9 @@ Usage example:
 	}
 }
 
-
+@mixin clearfix(){
+	@extend .clearfix;
+}
 
 /* Triangles ==================================================  */
 /* Requires parent container to be relative positioned
@@ -205,9 +210,7 @@ Usage example:
 	border-left: $width solid transparent;
 }
 
-@mixin clearPseudo{
-	margin-right:-4px;
-}
+
 @mixin min-height($value){
 	min-height: $value;
 	.lte-ie9 &{height: $value;}
@@ -246,13 +249,17 @@ Usage example:
 }
 
 
-
-
-
 /*  ================================================================================
 	BLOCK ELEMENT
 ================================================================================  */
 /* Usage example: <div data-block-height="4" data-small-block-height="2"></div> */
+[data-block-height]{
+	display: block;
+	width: 100%;
+	@include clearfix;
+}
+
+
 $b: 15;
 @while $b > 0 {
 	[data-block-height="#{$b}"],
@@ -262,30 +269,25 @@ $b: 15;
 	$b: $b - 1;
 }
 
-[data-block-height]{
-	display: block;
-	width: 100%;
-	@extend .clearfix;
-}
-
-
 /*  =====================================================================================
-	Simple grid system built on data-attributes data-box-amount and data-horizontal-boxes
+	Simple grid system built on data-attributes
 =========================================================================================  */
-$defaultGutterWidth: 20px;
-$defaultSmallGutterWidth: 10px;
-$mobileBreakPoint: 650px;
-
-
 [data-columns]{
 	width: 100%;
 	display: block;
-	@extend .clearfix;
+	@include clearfix;
 
 	.box{
 		@include inline-block;
-		@include clearPseudo;
+		vertical-align: top;
 		background: skyblue;
+		margin-right: -3px;
+		margin-top: units(2);
+
+		@include device-size(small){
+			margin-right: -4px;
+			margin-top: units(1);
+		}
 
 		>div{
 			display: block;
@@ -294,21 +296,21 @@ $mobileBreakPoint: 650px;
 	}
 }
 
-$boxes: 20;
-@while $boxes > 0 {
-	[data-columns="#{$boxes}"],
-	.small [data-mobile-columns="#{$boxes}"]{
+$columns: 20;
+@while $columns > 0 {
+	[data-columns="#{$columns}"],
+	.small [data-mobile-columns="#{$columns}"]{
 		.box{
-			width: percentage(1/$boxes);
+			width: percentage(1/$columns);
 			padding: 0 ($defaultGutterWidth/2) 0 ($defaultGutterWidth/2);
-			&:nth-child(#{$boxes}n+1){
+			&:nth-child(#{$columns}n+1){
 				padding-left: 0px;
 			}
-			&:nth-child(#{$boxes}n+#{$boxes}){
+			&:nth-child(#{$columns}n+#{$columns}){
 				padding-right: 0px;
 			}
 
 		}
 	}
-	$boxes: $boxes - 1;
+	$columns: $columns - 1;
 }
