@@ -26,6 +26,15 @@
 </head>
 <body>
 
+    <header id="header">
+        <div class="widthLimit">
+            <h1>Header</h1>
+        </div>
+        <?php include $path["file"]["partials"] . 'navigation.php'; ?>
+    </header>
+
+
+
     <!-- <pre> --> <?php //print_r($path); ?> <!-- </pre> -->
 
 

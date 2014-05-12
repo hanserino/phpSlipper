@@ -2,16 +2,28 @@ var stylePath = 'style/',
 	iconsPath = stylePath + 'icons/svg/',
 	fontPath = stylePath + 'fonts/',
 	jsPath = 'js/',
-	imgPath = 'img/';
+	imgDumpPath = 'images/imgDump',
+	imgPath = 'images/';
 
 
 module.exports = function(grunt) {
+
+	grunt.log.write('This is how you log inside the gruntfile');
+
+
+	/* Timegrunt ===============================================
+	https://www.npmjs.org/package/time-grunt
+	============================================================ */
+	require('time-grunt')(grunt);
+
 
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 
-		/* Ugilfy js =============================================== */
+		/* Uglify ===============================================
+		https://github.com/gruntjs/grunt-contrib-uglify
+		============================================================ */
 		uglify: {
 			build: {
 				src: [
@@ -44,11 +56,16 @@ module.exports = function(grunt) {
   		https://github.com/gruntjs/grunt-contrib-imagemin
 		============================================================ */
 		imagemin: {
-			dynamic: {
+			options: {
+				cache: false,
+				optimizationLevel: 5
+			},
+
+			dist: {
 				files: [{
 					expand: true,
-					cwd: imgPath,
-					src: ['**/*.{png,jpg,gif}'],
+					cwd: imgDumpPath,
+					src: ['**/*.{png,jpg,jpeg,gif}'],
 					dest: imgPath
 				}]
 			}

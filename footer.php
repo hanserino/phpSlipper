@@ -1,6 +1,6 @@
 
     <footer id="footer" class="widthLimit">
-        <?php include_once $path["file"]["partials"] . 'footer.php'; ?>
+        <h2>Footer</h2>
     </footer>
 
     </body>
